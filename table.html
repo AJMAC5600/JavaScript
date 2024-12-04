@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <center>
+      <input type="number" id="input" placeholder="Enter a number" />
+      <div id="inputbox"></div>
+      <button id="btn" onclick="onFunc()">Submit</button>
+    </center>
+    <script>
+      function onFunc() {
+        let btn = document.getElementById("btn");
+
+        let box = document.getElementById("inputbox");
+        let num = parseInt(document.getElementById("input").value);
+        let text = "";
+        for (let i = 1; i <= 10; i++) {
+          text = text + `<p>${num} X ${i} = ${num * i}</p>`;
+        }
+        box.innerHTML = text;
+        btn.style.display = "none";
+        document.getElementById("input").style.display = "none";
+      }
+    </script>
+  </body>
+</html>

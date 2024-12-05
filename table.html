@@ -10,20 +10,42 @@
       <input type="number" id="input" placeholder="Enter a number" />
       <div id="inputbox"></div>
       <button id="btn" onclick="onFunc()">Submit</button>
+      <button id="btn2" onclick="onReset()">Reset</button>
     </center>
     <script>
-      function onFunc() {
-        let btn = document.getElementById("btn");
+      document.getElementById("btn2").style.display = "none";
 
-        let box = document.getElementById("inputbox");
-        let num = parseInt(document.getElementById("input").value);
+      function onFunc() {
+        const btn = document.getElementById("btn");
+        const box = document.getElementById("inputbox");
+        const inputElement = document.getElementById("input");
+
+        const num = parseInt(inputElement.value);
         let text = "";
-        for (let i = 1; i <= 10; i++) {
-          text = text + `<p>${num} X ${i} = ${num * i}</p>`;
+
+        if (isNaN(num)) {
+          alert("Please enter a valid number!");
+        } else {
+          for (let i = 1; i <= 10; i++) {
+            text += `<p>${num} X ${i} = ${num * i}</p>`;
+          }
+
+          box.innerHTML = text;
+          btn.style.display = "none";
+          inputElement.style.display = "none";
+          document.getElementById("btn2").style.display = "block";
         }
-        box.innerHTML = text;
-        btn.style.display = "none";
-        document.getElementById("input").style.display = "none";
+      }
+
+      function onReset() {
+        const btn = document.getElementById("btn");
+        const inputElement = document.getElementById("input");
+
+        document.getElementById("inputbox").innerHTML = "";
+        inputElement.value = "";
+        inputElement.style.display = "block";
+        btn.style.display = "block";
+        document.getElementById("btn2").style.display = "none";
       }
     </script>
   </body>
